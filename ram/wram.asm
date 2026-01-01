@@ -191,7 +191,7 @@ wOverworldMap:: ds 1300
 wOverworldMapEnd::
 
 NEXTU
-wTempPic:: ds 7 * 7 tiles
+wTempPic:: ds PIC_SIZE tiles
 ENDU
 
 
@@ -363,7 +363,7 @@ wFilteredBagItems:: ds 4
 NEXTU
 ; Saved copy of OAM for the first frame of the animation to make it easy to
 ; flip back from the second frame.
-wMonPartySpritesSavedOAM:: ds $60
+wMonPartySpritesSavedOAM:: ds OBJ_SIZE * 4 * PARTY_LENGTH
 
 NEXTU
 wTrainerCardBlkPacket:: ds $40
@@ -401,7 +401,7 @@ wAnimPalette:: db
 NEXTU
 	ds 60
 ; temporary buffer when swapping party mon data
-wSwitchPartyMonTempBuffer:: ds 44 ; party_struct size
+wSwitchPartyMonTempBuffer:: ds PARTYMON_STRUCT_LENGTH
 
 NEXTU
 	ds 120
@@ -688,7 +688,11 @@ NEXTU
 	ds 1
 ; difference in X between the next ball and the current one
 wHUDPokeballGfxOffsetX:: db
-wHUDGraphicsTiles:: ds 3
+wHUDGraphicsTiles::
+wHUDUnusedTopTile:: db
+wHUDCornerTile:: db
+wHUDTriangleTile:: db
+wHUDGraphicsTilesEnd::
 
 NEXTU
 ; the level of the mon at the time it entered day care
@@ -890,6 +894,7 @@ wDownscaledMonSize::
 ; FormatMovesString stores the number of moves minus one here
 wNumMovesMinusOne:: db
 
+; This union spans 20 bytes.
 UNION
 ; storage buffer for various name strings
 wNameBuffer:: ds NAME_BUFFER_LENGTH
@@ -905,7 +910,8 @@ wPayDayMoney:: ds 3
 
 NEXTU
 ; evolution data for one mon
-wEvoDataBuffer:: ds 4 * 3 + 1 ; enough for Eevee's three 4-byte evolutions and 0 terminator
+wEvoDataBuffer:: ds NUM_EVOS_IN_BUFFER * 4 + 1 ; enough for Eevee's three 4-byte evolutions and 0 terminator
+wEvoDataBufferEnd::
 
 NEXTU
 wBattleMenuCurrentPP:: db
@@ -1083,7 +1089,7 @@ ENDU
 
 	ds 1
 
-wGymCityName:: ds 17
+wGymCityName:: ds GYM_CITY_LENGTH
 
 wGymLeaderName:: ds NAME_LENGTH
 
@@ -1212,7 +1218,7 @@ wTrainerPicPointer:: dw
 	ds 1
 
 UNION
-wTempMoveNameBuffer:: ds 14
+wTempMoveNameBuffer:: ds MOVE_NAME_LENGTH
 
 NEXTU
 ; The name of the mon that is learning a move.
@@ -1274,6 +1280,7 @@ wCriticalHitOrOHKO:: db
 
 wMoveMissed:: db
 
+wBattleStatusData::
 ; always 0
 wPlayerStatsToDouble:: db
 ; always 0
@@ -1331,6 +1338,7 @@ wPlayerNumHits:: db
 ENDU
 
 	ds 2
+wBattleStatusDataEnd::
 
 ; non-zero when an item or move that allows escape from battle was used
 wEscapedFromBattle:: db
@@ -1560,7 +1568,8 @@ wMoves:: ds NUM_MOVES
 
 wMoveNum:: db
 
-wMovesString:: ds 56
+; concatenated move name list where intermediate '@' are replaced with '<NEXT>'
+wMovesString:: ds NUM_MOVES * MOVE_NAME_LENGTH
 
 wUnusedCurMapTilesetCopy:: db
 
@@ -1810,7 +1819,7 @@ wWestConnectionHeader::  map_connection_struct wWest
 wEastConnectionHeader::  map_connection_struct wEast
 
 ; sprite set for the current map (11 sprite picture ID's)
-wSpriteSet:: ds 11
+wSpriteSet:: ds SPRITE_SET_LENGTH
 ; sprite set ID for the current map
 wSpriteSetID:: db
 
@@ -2142,12 +2151,12 @@ wEventFlags:: flag_array NUM_EVENTS
 wSafariZoneEntranceCurScript::
 UNION
 wGrassRate:: db
-wGrassMons:: ds 10 * 2
+wGrassMons:: ds WILDDATA_LENGTH - 1
 
 	ds 8
 
 wWaterRate:: db
-wWaterMons:: ds 10 * 2
+wWaterMons:: ds WILDDATA_LENGTH - 1
 
 NEXTU
 ; linked game's trainer name

@@ -20,18 +20,18 @@ InGameTrade_CheckForTradeEvo:
 	;ld a, [wInGameTradeReceiveMonName]
 
 	; GRAVELER
-	;cp "G"
-	;jr z, .ok
+	;cp 'G'
+	;jr z, nameMatched
 
 	; "SPECTRE" (HAUNTER)
-	;cp "S"
+	;cp 'S'
 	;ret nz
 	;ld a, [wInGameTradeReceiveMonName + 1]
-	;cp "P"
+	;cp 'P'
 	;ret nz
 	ret
 
-.ok
+.nameMatched
 	ld a, [wPartyCount]
 	dec a
 	ld [wWhichPokemon], a

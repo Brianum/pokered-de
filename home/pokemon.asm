@@ -320,11 +320,7 @@ PrintStatusCondition::
 	pop de
 	jr nz, PrintStatusConditionNotFainted
 ; if the pokemon's HP is 0, print "FNT"
-	ld a, "B"
-	ld [hli], a
-	ld a, "S"
-	ld [hli], a
-	ld [hl], "G"
+	ld_hli_a_string "BSG"
 	and a
 	ret
 
@@ -337,7 +333,7 @@ PrintStatusConditionNotFainted::
 ; hl = destination address
 ; [wLoadedMonLevel] = level
 PrintLevel::
-	ld a, "<LV>" ; ":L" tile ID
+	ld a, '<LV>' ; ":L" tile ID
 	ld [hli], a
 	ld c, 2 ; number of digits
 	ld a, [wLoadedMonLevel] ; level
@@ -353,7 +349,7 @@ PrintLevel::
 ; hl = destination address
 ; [wLoadedMonLevel] = level
 PrintLevelFull::
-	ld a, "<LV>" ; ":L" tile ID
+	ld a, '<LV>' ; ":L" tile ID
 	ld [hli], a
 	ld c, 3 ; number of digits
 	ld a, [wLoadedMonLevel] ; level
