@@ -80,17 +80,17 @@ tidy:
 	$(RM) $(roms) \
 	      $(roms:.gbc=.sym) \
 	      $(roms:.gbc=.map) \
-# 	      $(patches) \
-# 	      $(patches:.patch=_vc.gbc) \
-# 	      $(patches:.patch=_vc.sym) \
-# 	      $(patches:.patch=_vc.map) \
-# 	      $(patches:%.patch=vc/%.constants.sym)
 	      $(pokered_obj) \
 	      $(pokeblue_obj) \
 	      $(pokered_vc_obj) \
 	      $(pokeblue_vc_obj) \
 	      $(pokeblue_debug_obj) \
 	      rgbdscheck.o
+# 	      $(patches) \
+# 	      $(patches:.patch=_vc.gbc) \
+# 	      $(patches:.patch=_vc.sym) \
+# 	      $(patches:.patch=_vc.map) \
+# 	      $(patches:%.patch=vc/%.constants.sym)
 	$(MAKE) clean -C tools/
 
 compare: $(roms) $(patches)
