@@ -6,7 +6,7 @@ ItemNames::
 	li "POKéBALL"
 	li "KARTE"
 	li "FAHRRAD"
-	li "?????"
+	li "?????" ; SURFBOARD
 	li "SAFARIBALL"
 	li "POKéDEX"
 	li "MONDSTEIN"
@@ -43,13 +43,13 @@ ItemNames::
 	li "DOMFOSSIL"
 	li "HELIXFOSSIL"
 	li "?-ÖFFNER"
-	li "?????"
+	li "?????" ; ITEM_2C
 	li "RAD-COUPON"
 	li "X-TREFFER"
 	li "BLATTSTEIN"
 	li "TÜRÖFFNER"
 	li "NUGGET"
-	li "AP-PLUS"
+	li "AP-PLUS" ; ITEM_32
 	li "POKéPUPPE"
 	li "HYPERHEILER"
 	li "BELEBER"

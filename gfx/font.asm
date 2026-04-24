@@ -24,7 +24,7 @@ Unk9GraphicEnd:
 TextBoxGraphics:: INCBIN "gfx/font/font_extra.2bpp"
 TextBoxGraphicsEnd::
 
-PokedexTileGraphics: INCBIN "gfx/pokedex/pokedex.2bpp",$10,$120
+PokedexTileGraphics: INCBIN "gfx/pokedex/pokedex.2bpp"
 PokedexTileGraphicsEnd:
 
 WorldMapTileGraphics: INCBIN "gfx/town_map/town_map.2bpp"

@@ -198,7 +198,7 @@ DisplayPlayerBlackedOutText::
 	ld hl, PlayerBlackedOutText
 	call PrintText
 	ld a, [wStatusFlags6]
-	res 5, a ; reset forced to use bike bit
+	res BIT_ALWAYS_ON_BIKE, a
 	ld [wStatusFlags6], a
 	CheckEvent EVENT_IN_SAFARI_ZONE
 	jr z, .didnotblackoutinsafari

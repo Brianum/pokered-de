@@ -328,8 +328,6 @@ LoadEDTile:
 	ld de, vFont tile $70
 	ld hl, ED_Tile
 	ld bc, (ED_TileEnd - ED_Tile)
-	; to fix the graphical bug on poor emulators
-	;lb bc, BANK(ED_Tile), (ED_TileEnd - ED_Tile) / $8
 	ld a,$01
 	call FarCopyDataDouble
 	jp EnableLCD

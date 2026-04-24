@@ -77,14 +77,14 @@ clean: tidy
 	     -delete
 
 tidy:
+	$(RM) $(roms) \
+	      $(roms:.gbc=.sym) \
+	      $(roms:.gbc=.map) \
 # 	      $(patches) \
 # 	      $(patches:.patch=_vc.gbc) \
 # 	      $(patches:.patch=_vc.sym) \
 # 	      $(patches:.patch=_vc.map) \
 # 	      $(patches:%.patch=vc/%.constants.sym)
-	$(RM) $(roms) \
-	      $(roms:.gbc=.sym) \
-	      $(roms:.gbc=.map) \
 	      $(pokered_obj) \
 	      $(pokeblue_obj) \
 	      $(pokered_vc_obj) \

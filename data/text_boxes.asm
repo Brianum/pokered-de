@@ -37,7 +37,7 @@ TextBoxTextAndCoordTable:
 	text_box_text JP_POKEDEX_MENU_TEMPLATE,          11,  8, 19, 17, UnusedText,              12, 10
 
 UnusedText:
-	db "@" ; unused
+	db "@"
 
 BuySellQuitText:
 	db   "KAUF"

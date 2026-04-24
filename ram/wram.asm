@@ -1075,15 +1075,13 @@ wPartyMenuBlkPacket:: ds $30
 
 NEXTU
 	ds 29
-
 ; storage buffer for various strings
-wStringBuffer::  ds 19
+wStringBuffer:: ds 19
+
 NEXTU
 	ds 29
-
 ; the total amount of exp a mon gained
 wExpAmountGained:: dw
-
 wGainBoostedExp:: db
 ENDU
 
@@ -2149,6 +2147,7 @@ wSecondLockTrashCanIndex:: db
 wEventFlags:: flag_array NUM_EVENTS
 
 wSafariZoneEntranceCurScript::
+
 UNION
 wGrassRate:: db
 wGrassMons:: ds WILDDATA_LENGTH - 1
@@ -2190,6 +2189,7 @@ wEnemyMon{d:n}Nick:: ds NAME_LENGTH
 ENDR
 
 ENDU
+
 
 wTrainerHeaderPtr:: dw
 
