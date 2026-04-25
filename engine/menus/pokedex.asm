@@ -523,7 +523,7 @@ ShowPokedexDataInternal:
 	pop af
 	cp 10
 	jr nc, .skip_zero
-	ld [hl], '<DOT>'
+	ld [hl], '0'
 .skip_zero
 	inc hl
 	ld a, [hli]
