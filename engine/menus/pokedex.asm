@@ -521,13 +521,13 @@ ShowPokedexDataInternal:
 	call PrintNumber ; print feet (height)
 	hlcoord 14, 6
 	pop af
-	cp $a
-	jr nc, .func_43d7
-	ld [hl], $F6
-.func_43d7
+	cp 10
+	jr nc, .skip_zero
+	ld [hl], '<DOT>'
+.skip_zero
 	inc hl
 	ld a, [hli]
-	ldd [hl], a
+	ld [hld], a
 	ld [hl], $F2
 	inc de
 	inc de
